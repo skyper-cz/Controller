@@ -16,7 +16,7 @@ public class Main {
     public static JPanel hlavni = new JPanel();
     public static JPanel otocna = new JPanel();
 
-    public static String cesta = "10.20.12.111:80";
+    public static String cesta = "http://10.20.12.111:80";
     public static boolean stisknuto = false;
     public static boolean[] kery = new boolean[]{false, false, false, false, false, false, false, false};
 
