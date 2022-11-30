@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Controller" />
+        <module name="Controller (1) (org.example)" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Controller (2) (cz.ugv)" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
