@@ -2,8 +2,6 @@ package cz.ugv;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
@@ -15,10 +13,7 @@ public class Main {
     public static JFrame fr = new JFrame("Ovládání");
     public static JPanel hlavni = new JPanel();
     public static JPanel otocna = new JPanel();
-
     public static String cesta = "http://10.20.12.111:80";
-    public static boolean stisknuto = false;
-    public static boolean[] kery = new boolean[]{false, false, false, false, false, false, false, false};
 
     public static void main(String[] args) {
         fr.setBounds(0, 0, 1210, 600);
