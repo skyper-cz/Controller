@@ -23,7 +23,6 @@ public class Main {
     public static JTextField vlozenaipadresa = new JTextField("Zde vložte adresu");
     public static JTextField vlozenyport = new JTextField("Zde vložte port");
 
-    //public static EmbeddedMediaPlayerComponent mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
     public static void main(String[] args) {
 
         fr.setBounds(0, 0, 1210, 600);
@@ -32,15 +31,6 @@ public class Main {
         fr.getContentPane().setBackground(Color.gray);
         fr.setVisible(true);
         fr.setResizable(true);
-
-       /** fr.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                mediaPlayerComponent.release();
-                System.exit(0);
-            }
-        });
-        **/
 
         hlavni.setBounds(0, 0, 600, 600);
         hlavni.setVisible(false);
@@ -100,66 +90,23 @@ public class Main {
                         throw new RuntimeException(ex);
                     }
                 }
-
-                if (keyCode == KeyEvent.VK_UP) {
-                    try {
-                        nahoru();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-                else if (keyCode == KeyEvent.VK_DOWN) {
-                    try {
-                        dolu();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-                else if (keyCode == KeyEvent.VK_LEFT) {
-                    try {
-                        doleva();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
-                else if (keyCode == KeyEvent.VK_RIGHT) {
-                    try {
-                        doprava();
-                    } catch (IOException ex) {
-                        throw new RuntimeException(ex);
-                    }
-                }
             }
         });
 
         fr.update(fr.getGraphics());
     }
     public static void forward() throws IOException {
-        Communication(ipina + ":" + port + "/rizeni", "W");
+        Communication(ipina, Integer.parseInt(port), "w");
     }
     public static void left() throws IOException {
-        Communication(ipina + ":" + port + "/rizeni", "A");
+        Communication(ipina, Integer.parseInt(port), "a");
     }
     public static void right() throws IOException {
-        Communication(ipina + ":" + port + "/rizeni", "D");
+        Communication(ipina, Integer.parseInt(port), "d");
     }
     public static void back() throws IOException {
-        Communication(ipina + ":" + port + "/rizeni", "S");
+        Communication(ipina, Integer.parseInt(port), "s");
     }
-
-    public static void nahoru() throws IOException {
-        Communication(ipina + ":" + port + "/kamera", "W");
-    }
-    public static void dolu() throws IOException {
-        Communication(ipina + ":" + port + "/kamera", "S");
-    }
-    public static void doleva() throws IOException {
-        Communication(ipina + ":" + port + "/kamera", "A");
-    }
-    public static void doprava() throws IOException {
-        Communication(ipina + ":" + port + "/kamera", "D");
-    }
-
     public static void Potvrzeni(ActionEvent e){
         ipina = String.valueOf(vlozenaipadresa);
         port = String.valueOf(vlozenyport);
