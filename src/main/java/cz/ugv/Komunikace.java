@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class Komunikace {
-    public static void Communication(String adresa, int port, String smerJizdy) throws IOException {
+    public static void Communication(String adresa, int port, String smerJizdy) throws UnknownHostException, SocketException {
 
         InetAddress address = InetAddress.getByName(adresa);
         DatagramSocket socket = new DatagramSocket();

@@ -9,6 +9,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 
 import static cz.ugv.Komunikace.Communication;
 
@@ -65,46 +67,55 @@ public class Main {
                 if (keyCode == KeyEvent.VK_W) {
                     try {
                         forward();
-                    } catch (IOException ex) {
+                    } catch (SocketException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (UnknownHostException ex) {
                         throw new RuntimeException(ex);
                     }
                 }
                 else if (keyCode == KeyEvent.VK_A) {
                     try {
                         left();
-                    } catch (IOException ex) {
+                    } catch (SocketException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (UnknownHostException ex) {
                         throw new RuntimeException(ex);
                     }
                 }
                 else if (keyCode == KeyEvent.VK_S) {
                     try {
                         back();
-                    } catch (IOException ex) {
+                    } catch (SocketException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (UnknownHostException ex) {
                         throw new RuntimeException(ex);
                     }
                 }
                 else if (keyCode == KeyEvent.VK_D) {
                     try {
                         right();
-                    } catch (IOException ex) {
+                    } catch (SocketException ex) {
+                        throw new RuntimeException(ex);
+                    } catch (UnknownHostException ex) {
                         throw new RuntimeException(ex);
                     }
+
                 }
             }
         });
 
         fr.update(fr.getGraphics());
     }
-    public static void forward() throws IOException {
+    public static void forward() throws SocketException, UnknownHostException {
         Communication(ipina, Integer.parseInt(port), "w");
     }
-    public static void left() throws IOException {
+    public static void left() throws SocketException, UnknownHostException {
         Communication(ipina, Integer.parseInt(port), "a");
     }
-    public static void right() throws IOException {
+    public static void right() throws SocketException, UnknownHostException {
         Communication(ipina, Integer.parseInt(port), "d");
     }
-    public static void back() throws IOException {
+    public static void back() throws SocketException, UnknownHostException {
         Communication(ipina, Integer.parseInt(port), "s");
     }
     public static void Potvrzeni(ActionEvent e){
