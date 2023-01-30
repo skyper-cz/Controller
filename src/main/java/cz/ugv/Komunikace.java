@@ -8,6 +8,7 @@ public class Komunikace {
 
         InetAddress address = InetAddress.getByName(adresa);
         DatagramSocket socket = new DatagramSocket();
+        System.out.println("Odesílám na: " + adresa + ":" + port + "A jedeme: " + smerJizdy);
 
         try {
             byte[] buffer = smerJizdy.getBytes();
