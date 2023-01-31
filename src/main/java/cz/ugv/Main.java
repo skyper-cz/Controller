@@ -19,8 +19,8 @@ import static cz.ugv.Komunikace.Communication;
 public class Main {
 
     public static JFrame fr = new JFrame("Ovládání");
-    public static EmbeddedMediaPlayerComponent video = new EmbeddedMediaPlayerComponent();
-    public static MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
+    //public static EmbeddedMediaPlayerComponent video = new EmbeddedMediaPlayerComponent();
+   // public static MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
 
     public static String ipina = "";
     public static String port = "";
@@ -36,8 +36,8 @@ public class Main {
         fr.getContentPane().setBackground(Color.gray);
         fr.setResizable(true);
 
-        video.setBounds(0, 0, fr.getWidth(), fr.getHeight());
-        fr.add(video);
+        //video.setBounds(0, 0, fr.getWidth(), fr.getHeight());
+        //fr.add(video);
 
         vlozenaipadresa.setBounds(400, 200, 300, 50);
         vlozenaipadresa.setVisible(true);
@@ -106,7 +106,7 @@ public class Main {
         vlozenyport.setVisible(false);
         potvrzeni.setVisible(false);
 
-        video.getMediaPlayer().playMedia("/Users/user/Desktop/plocha/Plasy-2020/Dron/DJI_0096.MP4");
+        //video.getMediaPlayer().playMedia("/Users/user/Desktop/plocha/Plasy-2020/Dron/DJI_0096.MP4");
         fr.requestFocus();
     }
 
