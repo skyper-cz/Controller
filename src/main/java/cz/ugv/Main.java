@@ -19,35 +19,38 @@ import static cz.ugv.Komunikace.Communication;
 public class Main {
 
     public static JFrame fr = new JFrame("Ovládání");
-    //public static EmbeddedMediaPlayerComponent video = new EmbeddedMediaPlayerComponent();
-   // public static MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
+    public static EmbeddedMediaPlayerComponent mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
+    public static MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
 
     public static String ipina = "";
     public static String port = "";
+    public static String portvidea = "";
     public static JButton potvrzeni = new JButton("Potvrdit");
     public static JTextField vlozenaipadresa = new JTextField("Zde vložte adresu");
     public static JTextField vlozenyport = new JTextField("Zde vložte port");
+    public static JTextField vlozenyportvidea = new JTextField("Zde vložte port videa");
 
     public static void main(String[] args) {
 
-        fr.setBounds(0, 0, 1200, 600);
+        fr.setBounds(300, 150, 800, 600);
         fr.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         fr.setLayout(null);
         fr.getContentPane().setBackground(Color.gray);
         fr.setResizable(true);
 
-        //video.setBounds(0, 0, fr.getWidth(), fr.getHeight());
-        //fr.add(video);
-
-        vlozenaipadresa.setBounds(400, 200, 300, 50);
+        vlozenaipadresa.setBounds(250, 190, 300, 50);
         vlozenaipadresa.setVisible(true);
         fr.add(vlozenaipadresa);
 
-        vlozenyport.setBounds(400, 260, 300, 50);
+        vlozenyport.setBounds(250, 250, 300, 50);
         vlozenyport.setVisible(true);
         fr.add(vlozenyport);
 
-        potvrzeni.setBounds(400, 320, 300, 50);
+        vlozenyportvidea.setBounds(250, 310, 300, 50);
+        vlozenyportvidea.setVisible(true);
+        fr.add(vlozenyportvidea);
+
+        potvrzeni.setBounds(250, 370, 300, 50);
         potvrzeni.setVisible(true);
         potvrzeni.addActionListener(Main::Potvrzeni);
         fr.add(potvrzeni);
@@ -59,9 +62,7 @@ public class Main {
                                   System.out.println("Key Typed: " + e.getKeyChar());
                                   try {
                                       Poslat(String.valueOf(e.getKeyChar()));
-                                  } catch (SocketException ex) {
-                                      throw new RuntimeException(ex);
-                                  } catch (UnknownHostException ex) {
+                                  } catch (SocketException | UnknownHostException ex) {
                                       throw new RuntimeException(ex);
                                   }
                               }
@@ -81,33 +82,28 @@ public class Main {
         fr.update(fr.getGraphics());
     }
 
-    public static void Poslat(String stisknuto)throws SocketException, UnknownHostException {
-        switch (stisknuto){
-            case "w":
-                Communication(ipina, Integer.parseInt(port), "w");
-                break;
-            case "a":
-                Communication(ipina, Integer.parseInt(port), "a");
-                break;
-            case "s":
-                Communication(ipina, Integer.parseInt(port), "s");
-                break;
-            case "d":
-                Communication(ipina, Integer.parseInt(port), "d");
-                break;
-        }
+    public static void Poslat(String stisknuto) throws SocketException, UnknownHostException {
+        Communication(ipina, Integer.parseInt(port), stisknuto);
     }
 
     public static void Potvrzeni(ActionEvent e) {
         ipina = vlozenaipadresa.getText();
         port = vlozenyport.getText();
+        portvidea = vlozenyportvidea.getText();
 
         vlozenaipadresa.setVisible(false);
         vlozenyport.setVisible(false);
+        vlozenyportvidea.setVisible(false);
         potvrzeni.setVisible(false);
 
-        //video.getMediaPlayer().playMedia("/Users/user/Desktop/plocha/Plasy-2020/Dron/DJI_0096.MP4");
+        mediaPlayerComponent.setBounds(0, 0, fr.getWidth(), fr.getHeight());
+        fr.add(mediaPlayerComponent);
+
         fr.requestFocus();
+
+        String adresa = "https://" + ipina + ":" + portvidea;
+
+        mediaPlayerComponent.mediaPlayer().media().play(adresa);
     }
 
 }
