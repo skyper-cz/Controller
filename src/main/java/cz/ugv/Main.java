@@ -2,15 +2,13 @@ package cz.ugv;
 
 import uk.co.caprica.vlcj.factory.MediaPlayerFactory;
 import uk.co.caprica.vlcj.player.component.EmbeddedMediaPlayerComponent;
+import uk.co.caprica.vlcj.player.embedded.EmbeddedMediaPlayer;
 
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import javax.swing.JFrame;
-import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
@@ -19,9 +17,6 @@ import static cz.ugv.Komunikace.Communication;
 public class Main {
 
     public static JFrame fr = new JFrame("Ovládání");
-    public static EmbeddedMediaPlayerComponent mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
-    public static MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory();
-
     public static String ipina = "";
     public static String port = "";
     public static String portvidea = "";
@@ -96,14 +91,16 @@ public class Main {
         vlozenyportvidea.setVisible(false);
         potvrzeni.setVisible(false);
 
-        mediaPlayerComponent.setBounds(0, 0, fr.getWidth(), fr.getHeight());
-        fr.add(mediaPlayerComponent);
+        String adresa = "http://" + ipina + ":" + portvidea;
 
         fr.requestFocus();
 
-        String adresa = "https://" + ipina + ":" + portvidea;
+        String[] vlcArgs = {"--no-plugins-cache", "--no-snapshot-preview"};
+        EmbeddedMediaPlayerComponent mediaPlayerComponent = new EmbeddedMediaPlayerComponent();
+        MediaPlayerFactory mediaPlayerFactory = new MediaPlayerFactory(vlcArgs);
 
+        mediaPlayerComponent.setBounds(0, 0, fr.getWidth(), fr.getHeight());
+        fr.add(mediaPlayerComponent);
         mediaPlayerComponent.mediaPlayer().media().play(adresa);
     }
-
 }
