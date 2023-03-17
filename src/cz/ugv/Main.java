@@ -178,6 +178,7 @@ public class Main {
                 System.out.println("Unsupported operating system: " + osName);
             }
             fr.setSize(150,25);
+            fr.update(fr.getGraphics());
         }
         fr.requestFocus();
     }
