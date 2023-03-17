@@ -134,7 +134,7 @@ public class Main {
             Platform.startup(() -> {
             });
 
-            // create a JFXPanel and add it to the JFrame
+            // create a JFXPanel and add it to th JFrame
             JFXPanel webviewPanel = new JFXPanel();
             fr.add(webviewPanel);
 
@@ -151,7 +151,7 @@ public class Main {
             if (osName.contains("win")) {
                 // Windows
                 try {
-                    String vlcPath = "C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe"; // Replace with your VLC installation path
+                    String vlcPath = "C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"; // Replace with your VLC installation path
                     String command = vlcPath + " " + adresa;
                     Process p = Runtime.getRuntime().exec(command);
                 } catch (IOException ee) {
