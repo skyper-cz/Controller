@@ -129,23 +129,16 @@ public class Main {
         String adresa = "http://" + ipina + ":" + portvidea;
 
         if (!cesta) {
-
-            // initialize JavaFX toolkit
             Platform.startup(() -> {
             });
 
-            // create a JFXPanel and add it to th JFrame
             JFXPanel webviewPanel = new JFXPanel();
             fr.add(webviewPanel);
 
-            // create a WebView and set it as the scene for the JFXPanel
             WebView webview = new WebView();
             webviewPanel.setScene(new Scene(webview));
-
-            // load the adresa into the WebView
             webview.getEngine().load(adresa);
 
-            // set focus back to the JFrame
         } else {
             String osName = System.getProperty("os.name").toLowerCase();
             if (osName.contains("win")) {
