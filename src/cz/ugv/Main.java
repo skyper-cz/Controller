@@ -151,7 +151,7 @@ public class Main {
                     ee.printStackTrace();
                 }
             } else if (osName.contains("mac")) {
-                // Mac OS X
+                // Mac OS
                 try {
                     String vlcPath = "/Applications/VLC.app/Contents/MacOS/VLC"; // Replace with your VLC installation path
                     String command = vlcPath + " " + adresa;
