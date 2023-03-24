@@ -1,9 +1,9 @@
 package cz.ugv;
 
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.web.WebView;
-import javafx.embed.swing.JFXPanel;
+//import javafx.application.Platform;
+//import javafx.scene.Scene;
+//import javafx.scene.web.WebView;
+//import javafx.embed.swing.JFXPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -125,19 +125,20 @@ public class Main {
         potvrzeni.setVisible(false);
         rezimSpusteni.setVisible(false);
         rezim.setVisible(false);
+        varovani.setVisible(false);
 
         String adresa = "http://" + ipina + ":" + portvidea;
 
         if (!cesta) {
-            Platform.startup(() -> {
-            });
+            //Platform.startup(() -> {
+            //});
 
-            JFXPanel webviewPanel = new JFXPanel();
-            fr.add(webviewPanel);
+            //JFXPanel webviewPanel = new JFXPanel();
+            //fr.add(webviewPanel);
 
-            WebView webview = new WebView();
-            webviewPanel.setScene(new Scene(webview));
-            webview.getEngine().load(adresa);
+            //WebView webview = new WebView();
+            //webviewPanel.setScene(new Scene(webview));
+            //webview.getEngine().load(adresa);
 
         } else {
             String osName = System.getProperty("os.name").toLowerCase();
